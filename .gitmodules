@@ -1,0 +1,12 @@
+[submodule "project-estrella-functions"]
+	path = project-estrella-functions
+	url = https://github.com/CatalystCode/project-estrella-functions.git
+	branch = master
+[submodule "project-estrella-services"]
+	path = project-estrella-services
+	url = https://github.com/CatalystCode/project-estrella-services.git
+	branch = master
+[submodule "project-estrella-interfaces"]
+	path = project-estrella-interfaces
+	url = https://github.com/CatalystCode/project-estrella-interfaces.git
+	branch = master
