@@ -134,7 +134,7 @@
             "[resourceId('Microsoft.Web/sites', variables('functionsWebSiteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/sachinkundu/project-estrella-functions",
+            "RepoUrl": "https://github.com/CatalystCode/project-estrella-functions",
             "branch": "[parameters('branch')]",
             "IsManualIntegration": true
           }
@@ -172,7 +172,9 @@
             "WEBSITE_NODE_DEFAULT_VERSION": "6.5.0",
             "FUNCTIONS_EXTENSION_VERSION": "~1",
             "AzureWebJobsStorage": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('dataStorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('dataStorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value)]",
-            "AzureWebJobsinterface": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('dataStorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('dataStorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value)]"
+            "AzureWebJobsDashboard": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('dataStorageAccountName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('dataStorageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value)]",
+            "AZURE_STORAGE_ACCOUNT": "[variables('dataStorageAccountName')]", 
+            "AZURE_STORAGE_ACCESS_KEY" : "[listkeys(resourceId('Microsoft.Storage/storageAccounts', variables('dataStorageAccountName')), '2015-05-01-preview').key1]"
           }
         }
       ]
@@ -201,7 +203,7 @@
             "[resourceId('Microsoft.Web/sites', variables('interfaceWebSiteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/sachinkundu/project-estrella-interface",
+            "RepoUrl": "https://github.com/CatalystCode/project-estrella-interface",
             "branch": "[parameters('branch')]",
             "IsManualIntegration": true
           }
@@ -283,7 +285,7 @@
             "[resourceId('Microsoft.Web/sites', variables('servicesWebSiteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/sachinkundu/project-estrella-services",
+            "RepoUrl": "https://github.com/CatalystCode/project-estrella-services",
             "branch": "[parameters('branch')]",
             "IsManualIntegration": true
           }

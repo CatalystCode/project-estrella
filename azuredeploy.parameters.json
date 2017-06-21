@@ -15,7 +15,7 @@
       "value": 1
     },
     "deploymentPostFix": {
-      "value": "sakundu"
+      "value": "v1"
     },
     "cosmosDBAccountName": {
         "value": "estrellamlsakundu"
