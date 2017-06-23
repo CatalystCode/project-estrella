@@ -8,41 +8,9 @@
     "branch": {
       "type": "string"
     },
-    "edition": {
-      "type": "string",
-      "defaultValue": "Basic",
-      "allowedValues": [
-        "Basic",
-        "Standard",
-        "Premium"
-      ],
-      "metadata": {
-        "description": "The type of database to create."
-      }
-    },
-    "maxSizeBytes": {
-      "type": "string",
-      "defaultValue": "1073741824"
-    },
-    "requestedServiceObjectiveName": {
-      "type": "string",
-      "defaultValue": "Basic",
-      "allowedValues": [
-        "Basic",
-        "S0",
-        "S1",
-        "S2",
-        "P1",
-        "P2",
-        "P3"
-      ],
-      "metadata": {
-        "description": "Describes the performance level for Edition"
-      }
-    },
     "skuName": {
       "type": "string",
-      "defaultValue": "F1",
+      "defaultValue": "S1",
       "allowedValues": [
         "F1",
         "D1",
@@ -72,10 +40,6 @@
     "deploymentPostFix": {
       "type": "string",
       "minLength": 1
-    },
-    "cosmosDBAccountName": {
-      "type": "string",
-      "defaultValue": "estrellaml"
     }
   },
   "variables": {
