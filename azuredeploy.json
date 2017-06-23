@@ -2,6 +2,9 @@
   "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "githubAccountName": {
+      "type": "string"
+    },
     "branch": {
       "type": "string"
     },
@@ -80,11 +83,13 @@
     "hostingPlanName": "[toLower(concat('Estrellahostingplan', variables('uniqueId')))]",
     "dataStorageAccountName": "[toLower(concat('Estrelladata', variables('uniqueId')))]",
     "location": "[resourceGroup().location]",
-    "interfaceWebSiteName": "[concat('Estrellainterface-', variables('uniqueId'))]",
+    "interfaceWebSiteName": "[concat('EstrellaInterface-', variables('uniqueId'))]",
     "functionsWebSiteName": "[concat('EstrellaFunctions-', variables('uniqueId'))]",
     "servicesWebSiteName": "[concat('EstrellaServices-', variables('uniqueId'))]",
-    "cosmosDB": "[concat('EstrellaDB', variables('uniqueId'))]",
-    "databaseName": "Estrella"
+    "interfacesRepoUrl": "[concat('https://github.com/', parameters('githubAccountName'), '/project-estrella-interfaces')]",
+    "servicesRepoUrl": "[concat('https://github.com/', parameters('githubAccountName'), '/project-estrella-services')]",
+    "functionsRepoUrl": "[concat('https://github.com/', parameters('githubAccountName'), '/project-estrella-functions')]"
+
   },
 
   "resources": [
@@ -134,7 +139,7 @@
             "[resourceId('Microsoft.Web/sites', variables('functionsWebSiteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/CatalystCode/project-estrella-functions",
+            "RepoUrl": "[variables('interfacesRepoUrl')]",
             "branch": "[parameters('branch')]",
             "IsManualIntegration": true
           }
@@ -203,9 +208,9 @@
             "[resourceId('Microsoft.Web/sites', variables('interfaceWebSiteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/CatalystCode/project-estrella-interface",
+            "RepoUrl": "[variables('functionsRepoUrl')]",
             "branch": "[parameters('branch')]",
-            "IsManualIntegration": true
+            "IsManualIntegration": false
           }
         },
         {
@@ -234,31 +239,10 @@
             "[resourceId('Microsoft.Web/sites', variables('interfaceWebSiteName'))]"
           ],
           "properties": {
-            "alwaysOn": "true"
+            "alwaysOn": "false"
           }
         }
       ]
-    },
-    {
-      "apiVersion": "2015-04-08",
-      "name": "[parameters('cosmosDBAccountName')]",
-      "type": "Microsoft.DocumentDB/databaseAccounts",
-      "kind": "GlobalDocumentDB",
-      "location": "[resourceGroup().location]",
-      "dependsOn": [],
-      "tags": {
-          "displayName": "EstrellaML"
-      },
-      "scale": null,
-      "properties": {
-          "databaseAccountOfferType": "Standard",
-          "consistencyPolicy": {
-              "defaultConsistencyLevel": "Session",
-              "maxIntervalInSeconds": 5,
-              "maxStalenessPrefix": 100
-          },
-          "name": "[parameters('cosmosDBAccountName')]"
-      }
     },
     {
       "apiVersion": "2015-04-01",
@@ -285,9 +269,9 @@
             "[resourceId('Microsoft.Web/sites', variables('servicesWebSiteName'))]"
           ],
           "properties": {
-            "RepoUrl": "https://github.com/CatalystCode/project-estrella-services",
+            "RepoUrl": "[variables('servicesRepoUrl')]",
             "branch": "[parameters('branch')]",
-            "IsManualIntegration": true
+            "IsManualIntegration": false
           }
         },
         {
