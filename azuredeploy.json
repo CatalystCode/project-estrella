@@ -8,6 +8,9 @@
     "branch": {
       "type": "string"
     },
+    "siteLocation": {
+      "type": "string"
+    },
     "skuName": {
       "type": "string",
       "defaultValue": "S1",
