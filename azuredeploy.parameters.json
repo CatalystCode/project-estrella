@@ -2,11 +2,11 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
+    "githubAccountName" : {
+      "value" : "CatalystCode"
+    },
     "branch": {
       "value": "master"
-    },
-    "edition": {
-      "value": "Basic"
     },
     "skuName": {
       "value": "S2"
@@ -16,9 +16,6 @@
     },
     "deploymentPostFix": {
       "value": "v1"
-    },
-    "cosmosDBAccountName": {
-        "value": "estrellamlsakundu"
     }
   }
 }
